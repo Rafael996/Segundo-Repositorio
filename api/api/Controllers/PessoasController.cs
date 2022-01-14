@@ -8,6 +8,7 @@ using api.Models.Tipos;
 using api.Models;
 using AutoMapper;
 
+
 namespace api.Controllers
 {
     [Route("api/[controller]")]
@@ -54,10 +55,9 @@ namespace api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPessoa(int id, Pessoa pessoa)
         {
-            if (id != pessoa.Id)
-            {
-                return BadRequest();
-            }
+            if (id != pessoa.Id) return BadRequest();
+
+           
 
             _context.Entry(pessoa).State = EntityState.Modified;
 
@@ -77,7 +77,7 @@ namespace api.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok("Atualizado");
         }
 
         // POST: api/Pessoas
